@@ -72,9 +72,9 @@ resource "ibm_compute_vm_instance" "icpproxy" {
 module "icpprovision" {
     source = "github.com/ibm-cloud-architecture/terraform-module-icp-deploy"
     
-    icp-master = ["${softlayer_virtual_guest.icpmaster.ipv4_address}"]
-    icp-worker = ["${softlayer_virtual_guest.icpworker.*.ipv4_address}"]
-    icp-proxy = ["${softlayer_virtual_guest.icpproxy.*.ipv4_address}"]
+    icp-master = ["${ibm_compute_vm_instance.icpmaster.ipv4_address}"]
+    icp-worker = ["${ibm_compute_vm_instance.icpworker.*.ipv4_address}"]
+    icp-proxy = ["${ibm_compute_vm_instance.icpproxy.*.ipv4_address}"]
     
     #icp-version = "2.1.0-beta-1"
     #icp-version = "1.2.0"
