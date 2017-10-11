@@ -70,7 +70,9 @@ resource "ibm_compute_vm_instance" "icpproxy" {
 }
 
 module "icpprovision" {
-    source = "github.com/ibm-cloud-architecture/terraform-module-icp-deploy"
+    # Bluemix Schematics uses terraform 0.9.8, but icp-deploy module needs 0.10.3 to get local vars
+    #source = "github.com/ibm-cloud-architecture/terraform-module-icp-deploy"
+    source = "github.com/hassenius/terraform-module-icp-deploy/tree/nolocalvar"
     
     icp-master = ["${ibm_compute_vm_instance.icpmaster.ipv4_address}"]
     icp-worker = ["${ibm_compute_vm_instance.icpworker.*.ipv4_address}"]
