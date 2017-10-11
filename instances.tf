@@ -22,7 +22,7 @@ resource "ibm_compute_vm_instance" "icpmaster" {
 
     user_metadata = "{\"value\":\"newvalue\"}"
 
-    ssh_key_ids = ["${data.softlayer_ssh_key.public_key.id}"]
+    ssh_key_ids = ["${data.ibm_compute_ssh_key.public_key.id}"]
 }
 
 resource "ibm_compute_vm_instance" "icpworker" {
@@ -44,7 +44,7 @@ resource "ibm_compute_vm_instance" "icpworker" {
     
     user_metadata = "{\"value\":\"newvalue\"}"
     
-    ssh_key_ids = ["${data.softlayer_ssh_key.public_key.id}"]
+    ssh_key_ids = ["${data.ibm_compute_ssh_key.public_key.id}"]
 }
 
 resource "ibm_compute_vm_instance" "icpproxy" {
@@ -66,7 +66,7 @@ resource "ibm_compute_vm_instance" "icpproxy" {
     
     user_metadata = "{\"value\":\"newvalue\"}"
     
-    ssh_key_ids = ["${data.softlayer_ssh_key.public_key.id}"]
+    ssh_key_ids = ["${data.ibm_compute_ssh_key.public_key.id}"]
 }
 
 module "icpprovision" {
